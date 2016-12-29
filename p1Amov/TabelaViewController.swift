@@ -15,7 +15,7 @@ class TabelaViewController: UITableViewController {
     func adiciona(contacto: Contacto){
         lstContactos.append(contacto)
         tableView.reloadData()
-        print("Numero contactos: \(lstContactos.count)")
+        print("Numero Items: \(lstContactos.count)")
     }
     
     

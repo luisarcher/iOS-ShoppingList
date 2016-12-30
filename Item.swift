@@ -12,7 +12,7 @@ class Item : NSObject{
     var nome : String
     var marca : String?
     var quant : Int
-    var unid : float_t
+    var unid : String
     var preco : float_t?
     
     /*init (nome: String, quant : Int, unid : float_t){
@@ -21,7 +21,7 @@ class Item : NSObject{
         self.unid = unid;
     }*/
     
-    init (nome : String, marca : String, quant : Int, unid : float_t, preco : float_t){
+    init (nome : String, marca : String, quant : Int, unid : String, preco : float_t){
         self.nome = nome;
         self.quant = quant;
         self.unid = unid;

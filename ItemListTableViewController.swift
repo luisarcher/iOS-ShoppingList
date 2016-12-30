@@ -43,16 +43,17 @@ class ItemListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (lista_original?.getNumProdutos())!
+        return (lista_original?.items.count)!
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LinhaItem", for: indexPath)
 
+        let row = indexPath.row
         // Configure the cell...
         
-        cell.textLabel?.text = lista_original?.getNome()
+        cell.textLabel?.text = lista_original?.items[row].nome
 
         return cell
     }

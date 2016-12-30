@@ -10,8 +10,8 @@ import Foundation
 
 class ItemList: NSObject {
 
-    private var nome : String
-    private var items = [Item]()
+    var nome : String
+    var items = [Item]()
     
     init(n: String){
         self.nome = n;

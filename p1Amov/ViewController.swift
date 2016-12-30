@@ -14,15 +14,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var edtNome: UITextField!
     
     var base : TabelaViewController?
-    var cont_original : Contacto?
+    var lista_original : ItemList?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        if let contacto = cont_original {
-            edtNome.text = contacto.nome
-            edtEmail.text = contacto.email
+        if let lista = lista_original {
+            edtNome.text = lista.nome
+            edtEmail.text = "..."
         }
         
         edtNome.becomeFirstResponder()
@@ -52,13 +52,13 @@ class ViewController: UIViewController {
             return
         }
         
-        if cont_original == nil {
-            let contacto = Contacto(nome:nome, email: email)
+        if lista_original == nil {
+            let lista = ItemList(n:nome)
         
-        	base?.adiciona(contacto: contacto)
+            base?.adiciona(lista: lista)
         } else {
-            cont_original!.nome = nome
-            cont_original!.email = email
+            lista_original!.nome = nome
+            //lista_original!.email = email
             base?.tableView.reloadData()   //"o mais correcto era fazer uma funç\ao e fazer o reload data la dentro
         }
         

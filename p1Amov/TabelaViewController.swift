@@ -53,7 +53,7 @@ class TabelaViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let section = indexPath.section
+        _ = indexPath.section
         let row = indexPath.row
         
         let cell = tableView.dequeueReusableCell(withIdentifier: (row % 2 == 0 ? "LinhaContacto" : "LinhaContacto2"), for: indexPath)

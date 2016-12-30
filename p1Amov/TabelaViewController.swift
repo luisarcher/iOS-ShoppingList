@@ -120,8 +120,7 @@ class TabelaViewController: UITableViewController {
         lstListas[row1] = lstListas[row2]
         lstListas[row2] = temp
         
-        tableView.reloadData()
-    }
+        tableView.reloadData()    }
     
 
     /*

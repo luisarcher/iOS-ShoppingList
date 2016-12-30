@@ -10,8 +10,8 @@ import Foundation
 
 class ItemList: NSObject {
 
-    var nome : String
-    var items = [Item]()
+    private var nome : String
+    private var items = [Item]()
     
     init(n: String){
         self.nome = n;
@@ -20,5 +20,17 @@ class ItemList: NSObject {
     
     func adicionarItem(item : Item){
         items.append(item)
+    }
+    
+    func getListaProdutos() -> [Item] {
+        return items
+    }
+    
+    func getNumProdutos() -> Int {
+        return items.count
+    }
+    
+    func getNome() -> String {
+        return nome
     }
 }

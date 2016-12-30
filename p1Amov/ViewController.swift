@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         
         if let lista = lista_original {
             edtNome.text = lista.nome
-            edtEmail.text = "..."
+            //edtEmail.text = "..."
         }
         
         edtNome.becomeFirstResponder()
@@ -38,19 +38,19 @@ class ViewController: UIViewController {
         guard let nome = edtNome.text else {
             return
         }
-        guard let email = edtEmail.text else {
+        /*guard let email = edtEmail.text else {
             return
-        }
+        }*/
         
         if nome.characters.count < 1 {
             edtNome.becomeFirstResponder()
             return
         }
         
-        if email.characters.count < 1 {
+        /*if email.characters.count < 1 {
             edtEmail.becomeFirstResponder()
             return
-        }
+        }*/
         
         if lista_original == nil {
             let lista = ItemList(n:nome)

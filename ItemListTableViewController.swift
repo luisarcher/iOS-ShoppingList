@@ -19,6 +19,9 @@ class ItemListTableViewController: UITableViewController {
         print("Numero de produtos: \(lista_original?.getNumProdutos())")
     }
 
+    @IBAction func onEdit(_ sender: Any) {
+        tableView.setEditing(!tableView.isEditing, animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +30,8 @@ class ItemListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    
+        //print("numero de items nesta lista: " + (lista_original?.items[0].nome)!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,20 +53,43 @@ class ItemListTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LinhaItem", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LinhaItem2", for: indexPath)
 
         let row = indexPath.row
         // Configure the cell...
         
         cell.textLabel?.text = lista_original?.items[row].nome
+        
 
         return cell
     }
     
-    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }*/
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //let item =
+    }
     
+    /*
+ override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+ /*let lista = lstListas[indexPath.row]
+ 
+ let vc = storyboard?.instantiateViewController(withIdentifier: "EditarLista") as! ViewController
+ 
+ vc.lista_original = lista
+ vc.base = self
+ 
+ navigationController?.show(vc, sender: self)*/
+ 
+ let tvc = storyboard?.instantiateViewController(withIdentifier: "ItemListTableView") as! ItemListTableViewController
+ 
+ tvc.lista_original = lstListas[indexPath.row]
+ 
+ tvc.base = self
+ 
+ navigationController?.show(tvc, sender: self)
+ 
+ 
+ }
+ 
 
     /*
     // Override to support conditional editing of the table view.
@@ -71,17 +99,17 @@ class ItemListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            lista_original?.removeItem(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -98,14 +126,19 @@ class ItemListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if (segue.identifier == "segueItem"){
+            let vc = segue.destination as! ItemEditorViewController
+            vc.base = self
+        }
+        
     }
-    */
 
 }

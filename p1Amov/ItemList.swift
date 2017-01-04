@@ -22,6 +22,10 @@ class ItemList: NSObject {
         items.append(item)
     }
     
+    func removerItem(index : Int){
+        items.remove(at: index)
+    }
+    
     func getListaProdutos() -> [Item] {
         return items
     }

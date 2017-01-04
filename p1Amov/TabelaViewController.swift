@@ -60,7 +60,7 @@ class TabelaViewController: UITableViewController {
 
         // Configure the cell...
         cell.textLabel?.text = lstListas[row].nome
-        cell.detailTextLabel?.text = "10"
+        //cell.detailTextLabel?.text = "10"
         
         
         

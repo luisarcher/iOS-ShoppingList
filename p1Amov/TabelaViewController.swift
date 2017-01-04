@@ -7,21 +7,57 @@
 //
 
 import UIKit
+import CoreData
 
 class TabelaViewController: UITableViewController {
     
     var lstListas : [ItemList] = []
+    var nomeFichSerial : String?
 
     func adiciona(lista: ItemList){
         lstListas.append(lista)
         tableView.reloadData()
         print("Numero de Listas: \(lstListas.count)")
+
     }
     
+    func loadFileData(){
+        
+        //let tab = NSKeyedArchiver.unarchiveObject(withFile: nomeFichSerial) as? [ItemList]
+        
+        //let tab = NSKeyedArchiver.archivedData(withRootObject: nomeFichSerial) as? [ItemList]
+        
+        let tab = NSKeyedUnarchiver.unarchiveObject(withFile: nomeFichSerial!) as? [ItemList]
+        
+        if tab == nil{
+            print("Erro a ler ficheiro binario")
+        } else {
+            print("Ficheiro binario lido")
+        }
+        
+        lstListas = tab ?? []
+    }
     
+    func saveFileData(){
+        if NSKeyedArchiver.archiveRootObject(lstListas, toFile: nomeFichSerial!) {
+            print("Gravado com sucesso")
+        } else {
+            print("Erro ao gravar")
+        }
+    }
+    
+    func getDocumentsFilename(filename : String) -> String {
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let filePath = documentsDirectory.appendingPathComponent(filename)
+        return filePath.path
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nomeFichSerial = getDocumentsFilename(filename: "lists.dat")
+        
+        loadFileData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

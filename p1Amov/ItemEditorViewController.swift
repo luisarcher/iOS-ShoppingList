@@ -24,9 +24,15 @@ class ItemEditorViewController: UIViewController {
         super.viewDidLoad()
         
         if let item = item_original {
-            //faz copia dos valores
+            //insere os valores nas textbox
+            txtNome.text = item.nome
+            txtMarca.text = item.marca
+            txtQuantidade.text = String(item.quant)
+            txtUnidade.text = item.unid
+            txtPreco.text = String(describing: item.preco)
+            txtObs.text = item.obs
+            
         }
-        
         txtNome.becomeFirstResponder()
     }
 
@@ -57,20 +63,27 @@ class ItemEditorViewController: UIViewController {
             return
         }
         
+        let marca = (txtMarca?.text)! + ""
+        let preco = (txtPreco?.text)! + ""
         
-        let marca = txtMarca.text
-        let preco = txtPreco.text
+        
         
         if item_original == nil {
             //init (nome : String, marca : String, quant : Int, unid : float_t, preco : float_t){
-            let item = Item(nome: nome, marca: marca!, quant: Int(quantidade)!, unid:unidade, preco: float_t(preco!)!)
+            
+            let item = Item(nome: nome, marca: marca, quant: Int(quantidade)!, unid:unidade, preco: Float(preco)!, obs : obs)
             
             base?.adiciona(prod: item)
             
         } else {
             //Modo de edição
             item_original?.nome = nome
-            //...
+            item_original?.marca = marca
+            item_original?.quant = Int(quantidade)!
+            item_original?.unid = unidade
+            item_original?.preco = Float(preco)
+            item_original?.obs = obs
+            
             
             base?.tableView.reloadData()
         }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ItemList: NSObject {
+class ItemList: NSObject, NSCoding{
 
     var nome : String
     var items = [Item]()
@@ -26,15 +26,28 @@ class ItemList: NSObject {
         items.remove(at: index)
     }
     
-    func getListaProdutos() -> [Item] {
-        return items
-    }
-    
     func getNumProdutos() -> Int {
         return items.count
     }
     
-    func getNome() -> String {
-        return nome
+    func getItem(index : Int) -> Item{
+        return items[index];
+    }
+    
+    required init?(coder aDecoder : NSCoder) {
+        guard let nome = aDecoder.decodeObject(forKey: "nome") as? String else {
+            return nil
+        }
+        self.nome = nome
+        
+        guard let items = aDecoder.decodeObject(forKey: "items") as? [Item] else {
+            return nil
+        }
+        self.items = items
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(nome, forKey: "nome")
+        aCoder.encode(items, forKey: "items")
     }
 }

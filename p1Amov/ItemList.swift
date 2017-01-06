@@ -15,7 +15,7 @@ class ItemList: NSObject, NSCoding{
     
     init(n: String){
         self.nome = n;
-        items = [Item]()
+        self.items = [];
     }
     
     func adicionarItem(item : Item){
@@ -35,6 +35,7 @@ class ItemList: NSObject, NSCoding{
     }
     
     required init?(coder aDecoder : NSCoder) {
+        
         guard let nome = aDecoder.decodeObject(forKey: "nome") as? String else {
             return nil
         }
@@ -46,7 +47,7 @@ class ItemList: NSObject, NSCoding{
         self.items = items
     }
     
-    func encode(with aCoder: NSCoder) {
+    public func encode(with aCoder: NSCoder) {
         aCoder.encode(nome, forKey: "nome")
         aCoder.encode(items, forKey: "items")
     }

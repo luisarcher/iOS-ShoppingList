@@ -54,7 +54,7 @@ class ItemListTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LinhaItem2", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LinhaItem", for: indexPath)
 
         let row = indexPath.row
         // Configure the cell...

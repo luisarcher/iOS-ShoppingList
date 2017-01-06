@@ -33,9 +33,13 @@ class TabelaViewController: UITableViewController {
             print("Erro a ler ficheiro binario")
         } else {
             print("Ficheiro binario lido")
+            
         }
         
         lstListas = tab ?? []
+        
+        print(lstListas[0].nome)
+        print(lstListas[0].getNumProdutos())
     }
     
     func saveFileData(){

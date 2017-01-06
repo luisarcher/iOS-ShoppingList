@@ -81,7 +81,7 @@ class ItemEditorViewController: UIViewController {
             item_original?.marca = marca
             item_original?.quant = Int(quantidade)!
             item_original?.unid = unidade
-            item_original?.preco = Float(preco)
+            item_original?.preco = Float(preco)!
             item_original?.obs = obs
             
             

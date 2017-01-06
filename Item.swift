@@ -25,7 +25,7 @@ class Item : NSObject, NSCoding {
     var marca : String = ""
     var quant : Int = 0
     var unid : String = ""
-    var preco : Float = 0.0
+    var preco : Float? = 0.0
     var obs : String = ""
     
     /*init (nome: String, quant : Int, unid : float_t){
@@ -64,7 +64,7 @@ class Item : NSObject, NSCoding {
         }
         self.unid = unid
         
-        self.preco = aDecoder.decodeObject(forKey: "preco") as! Float
+        self.preco = aDecoder.decodeFloat(forKey: "preco") as? Float
         
         guard let obs = aDecoder.decodeObject(forKey: "obs") as? String else {
             return nil

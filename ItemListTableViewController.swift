@@ -54,13 +54,16 @@ class ItemListTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LinhaItem", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LinhaItem2", for: indexPath)
 
         let row = indexPath.row
         // Configure the cell...
         
         cell.textLabel?.text = lista_original?.items[row].nome
         
+        if let quant = lista_original?.items[row].quant {
+            cell.detailTextLabel?.text = "\(quant)"
+        }
 
         return cell
     }
@@ -74,6 +77,7 @@ class ItemListTableViewController: UITableViewController {
         vc.base = self
         
         navigationController?.show(vc, sender: self)
+        
     }
  
     /*
@@ -122,7 +126,5 @@ class ItemListTableViewController: UITableViewController {
             let vc = segue.destination as! ItemEditorViewController
             vc.base = self
         }
-        
     }
-
 }

@@ -101,9 +101,10 @@ class TabelaViewController: UITableViewController {
 
         // Configure the cell...
         cell.textLabel?.text = lstListas[row].nome
-        //cell.detailTextLabel?.text = "10"
         
+        let nItems = "\(lstListas[row].items.count)"
         
+        cell.detailTextLabel?.text = nItems
         
         return cell
     }

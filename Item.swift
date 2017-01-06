@@ -71,7 +71,7 @@ class Item : NSObject, NSCoding {
         }
         self.obs = obs
         
-    }    
+    }
     
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(nome, forKey: "nome")

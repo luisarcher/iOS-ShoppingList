@@ -18,6 +18,7 @@ class TabelaViewController: UITableViewController {
         lstListas.append(lista)
         tableView.reloadData()
         print("Numero de Listas: \(lstListas.count)")
+        saveFileData()
 
     }
     
